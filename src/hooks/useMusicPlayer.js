@@ -11,14 +11,12 @@ const useMusicPlayer = () => {
       togglePlay();
     } else {
       state.audioPlayer.pause();
-
-      // Create a new Audio instance
       const newAudio = new Audio(state.tracks[index].file);
       newAudio.play();
 
       setState((prevState) => ({
         ...prevState,
-        audioPlayer: newAudio, // Correctly update the audio player
+        audioPlayer: newAudio,
         currentTrackIndex: index,
         isPlaying: true,
       }));
@@ -47,7 +45,7 @@ const useMusicPlayer = () => {
 
   // Play the previous track
   function playPreviousTrack() {
-    if (state.currentTrackIndex === -1) return; // Prevent crash
+    if (state.currentTrackIndex === -1) return;
     const newIndex =
       (state.currentTrackIndex - 1 + state.tracks.length) % state.tracks.length;
     playTrack(newIndex);
@@ -55,7 +53,7 @@ const useMusicPlayer = () => {
 
   // Play the next track
   function playNextTrack() {
-    if (state.currentTrackIndex === -1) return; // Prevent crash
+    if (state.currentTrackIndex === -1) return;
     const newIndex = (state.currentTrackIndex + 1) % state.tracks.length;
     playTrack(newIndex);
   }
