@@ -1,13 +1,15 @@
-import React from "react";
+import { MusicPlayerProvider } from "./contexts/MusicPlayerContext";
 import TrackList from "./components/TrackList";
-import Controllers from "./components/Controller";
+import Controller from "./components/Controller";
+
 const App = () => {
   return (
-    <div>
-      <h1>Mini Spotify</h1>
-      <TrackList />
-      <Controllers />
-    </div>
+    <MusicPlayerProvider>
+      <div className="container">
+        <TrackList />
+        <Controller />
+      </div>
+    </MusicPlayerProvider>
   );
 };
 
